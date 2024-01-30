@@ -1,0 +1,32 @@
+{% include "main/base.html" %}
+{% load static %}
+
+{% block title %}<title>Home</title>{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static "main/css/index.css" %}">
+{% endblock head %}
+
+{% block content %}
+
+<div class="widget-place">
+    <div class="widget-holder">
+        <div class="widget-holder-img" style="background-image: url('{% static "main/imgs/widgets-icons/weather-icon.avif" %}');"></div>
+        <div class="widget-holder-body">
+            <h2>Weather</h2>
+            <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto eaque, iure a odio aspernatur magnam nemo cupiditate sed voluptatem itaque commodi eos modi consequuntur omnis officiis et vel nesciunt id.</h3>
+            <a class="btn btn-dark widget-holder-btn" href="{% url "weather_page" %}">Перейти</a>   
+        </div>
+    </div>
+    <div class="widget-holder">
+        <div class="widget-holder-img" style="background-image: url('{% static "main/imgs/widgets-icons/exchange-icon.jpg" %}');"></div>
+        <div class="widget-holder-body">
+            <h2>Exchange rate</h2>
+            <h3>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum in sit dignissimos veniam nisi ipsa dolorem! Dicta ab molestiae amet, sit rerum similique quam, quos, libero commodi corrupti recusandae iste.</h3>
+            <a class="btn btn-dark widget-holder-btn" href="{% url "exchange_page" %}">Перейти</a>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+

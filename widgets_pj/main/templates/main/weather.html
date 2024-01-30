@@ -1,0 +1,83 @@
+{% include "main/base.html" %}
+{% load static %}
+
+{% block title %}<title>Weather</title>{% endblock title %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static "main/css/weather.css" %}">
+{% endblock head %}
+
+{% block content %}
+
+<div class="container">
+    <div class="weather-place">
+        <div class="row" style="height: 100%;">
+            <div class="col-6" style="height: 100%; background-color: #d1d1d1;">
+                <div class="weather-holder">
+                    <div class="weather-title">
+                        <div class="weather-icon" style="background-image: url('{{ weather_icon_link }}');">
+                            <div class="temp-div">
+                                <span>{{temp}}°С</span>
+                            </div>
+                            
+                        </div>
+                        <div class="weather-city">
+                            <span>{{city}}</span>                            
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="weather-description">
+                        <div class="row">
+                            <div class="col col-md-6">
+                                <h4>Температура воздуха</h4>
+                                <p>
+                                    Температура: {{temp}} °С<br>
+                                    Ощущается как: {{feels_like}} °С<br>
+                                    Максимальная температура: {{temp_max}} °С<br>
+                                    Минимальная температура: {{temp_max}} °С<br>
+                                </p>
+                            </div>
+                            <div class="col col-md-6">
+                                <h4>Закат / Рассвет</h4>
+                                <p>
+                                    Рассвет: {{sunrise}}<br>
+                                    Закат: {{sunset}}<br>
+                                </p>
+                            </div>
+                            <div class="col col-md-6">
+                                <h4>Ветер</h4>
+                                <p>
+                                    Скорость: {{wind_speed}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="weather-search">
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <input type="text" name="city" class="form-control" placeholder="Город" aria-label="Город" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Поиск</button>
+                        </div>
+                          
+                    </form>
+                    {% if error %}
+                        <div class="alert alert-danger" role="alert">
+                            {{error}}
+                        </div>  
+                    {% endif %}  
+                </div>
+                              
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+
+
+
